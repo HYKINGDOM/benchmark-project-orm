@@ -1,0 +1,33 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/platform_cloud?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 10
+      idle-timeout: 30000
+      maximum-pool-size: 20
+      max-lifetime: 120000
+      connection-timeout: 30000
+mybatis-plus:
+  # xml文件路径
+  mapper-locations: classpath:mapper/*.xml
+  # 实体类路径
+  type-aliases-package: com.java.mybatis.plus.benchmarkmybatisplus.module.entity
+  configuration:
+    # 驼峰转换
+    map-underscore-to-camel-case: true
+    # 是否开启缓存
+    cache-enabled: true
+    # 打印sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 全局配置
+  global-config:
+    # 数据库字段驼峰下划线转换
+    db-column-underline: true
+    # id自增类型(数据库id自增)
+    id-type: 0
